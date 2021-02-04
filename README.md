@@ -3,6 +3,9 @@
 > The  task of age transformation illustrates the change of an individual's appearance over time. Accurately modeling this complex transformation over an input facial image is extremely challenging as it requires making convincing and possibly large changes to facial features and head shape, while still preserving the input identity. In this work, we present an image-to-image translation method that learns to directly encode real facial images into the latent space of a pre-trained unconditional GAN (e.g., StyleGAN) subject to a given aging shift. We employ a pre-trained age regression network used to explicitly guide the encoder to generate the latent codes corresponding to the desired age. In this formulation, our method approaches the continuous aging process as a regression task between the input age and desired target age, providing fine-grained control on the generated image. Moreover, unlike other approaches that operate solely in the latent space using a prior on the path controlling age, our method learns a more disentangled, non-linear path. We demonstrate that the end-to-end nature of our approach, coupled with the rich semantic latent space of StyleGAN, allows for further editing of the generated images. Qualitative and quantitative evaluations show the advantages of our method compared to state-of-the-art approaches.
 
 <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg"></a>
+[![Open In Colab I](https://colab.research.google.com/assets/colab-badge.svg)](http://colab.research.google.com/github/yuval-alaluf/SAM/blob/master/notebooks/inference_playground.ipynb)
+[![Open In Colab II](https://colab.research.google.com/assets/colab-badge.svg)](http://colab.research.google.com/github/yuval-alaluf/SAM/blob/master/notebooks/animation_inference_playground.ipynb)
+
 
 <p align="center">
 <img src="docs/teaser.png" width="800px"/>
@@ -123,7 +126,7 @@ To help visualize the results of SAM we provide a Jupyter notebook found in `not
 The notebook will download the pretrained aging model and run inference on the images found in `notebooks/images`.  
 
 ### MP4 Notebook
-To show full lifespan results using SAM we provide an additional notebook `notebooks/inference_playground_mp4.ipynb` that will 
+To show full lifespan results using SAM we provide an additional notebook `notebooks/animation_inference_playground.ipynb` that will 
 run aging on multiple ages between 0 and 100 and interpolate between the results to display full aging. 
 The results will be saved as an MP4 files in `notebooks/animations` showing the aging and de-aging results.
 
