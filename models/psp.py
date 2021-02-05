@@ -31,7 +31,7 @@ class pSp(nn.Module):
 
 	def load_weights(self):
 		if self.opts.checkpoint_path is not None:
-			print(f'Loading pSp from checkpoint: {self.opts.checkpoint_path}')
+			print(f'Loading SAM from checkpoint: {self.opts.checkpoint_path}')
 			ckpt = torch.load(self.opts.checkpoint_path, map_location='cpu')
 			self.encoder.load_state_dict(self.__get_keys(ckpt, 'encoder'), strict=False)
 			self.decoder.load_state_dict(self.__get_keys(ckpt, 'decoder'), strict=True)
@@ -116,7 +116,7 @@ class pSp(nn.Module):
 		return encoder
 
 	def __load_pretrained_psp_encoder(self):
-		print(f'Loading pSp from checkpoint: {self.opts.pretrained_psp_path}')
+		print(f'Loading pSp encoder from checkpoint: {self.opts.pretrained_psp_path}')
 		ckpt = torch.load(self.opts.pretrained_psp_path, map_location='cpu')
 		encoder_ckpt = self.__get_keys(ckpt, name='encoder')
 		encoder = self.__get_pretrained_psp_encoder()
