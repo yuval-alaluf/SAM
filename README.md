@@ -271,3 +271,17 @@ https://github.com/eladrich/pixel2style2pixel/blob/master/LICENSE
 
 ## Acknowledgments
 This code borrows heavily from [pixel2style2pixel](https://github.com/eladrich/pixel2style2pixel)
+
+## Citation
+If you use this code for your research, please cite our paper <a href="https://arxiv.org/abs/2102.02754">Only a Matter of Style: Age Transformation Using a Style-Based Regression Model</a>:
+
+```
+@misc{alaluf2021matter,
+      title={Only a Matter of Style: Age Transformation Using a Style-Based Regression Model}, 
+      author={Yuval Alaluf and Or Patashnik and Daniel Cohen-Or},
+      year={2021},
+      eprint={2102.02754},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+```
