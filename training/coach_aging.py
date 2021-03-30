@@ -78,8 +78,7 @@ class Coach:
 		y_hat, latent = self.net.forward(x, return_latents=True)
 		return y_hat, latent
 
-	def __set_target_to_source(self, x):
-		input_ages = self.aging_loss.extract_ages(x) / 100.
+	def __set_target_to_source(self, x, input_ages):
 		return [torch.cat((img, age * torch.ones((1, img.shape[1], img.shape[2])).to(self.device)))
 				for img, age in zip(x, input_ages)]
 
@@ -91,10 +90,12 @@ class Coach:
 				x, y = x.to(self.device).float(), y.to(self.device).float()
 				self.optimizer.zero_grad()
 
+				input_ages = self.aging_loss.extract_ages(x) / 100.
+
 				# perform no aging in 33% of the time
 				no_aging = random.random() <= (1. / 3)
 				if no_aging:
-					x_input = self.__set_target_to_source(x)
+					x_input = self.__set_target_to_source(x=x, input_ages=input_ages)
 				else:
 					x_input = [self.age_transformer(img.cpu()).to(self.device) for img in x]
 
@@ -105,18 +106,21 @@ class Coach:
 				y_hat, latent = self.perform_forward_pass(x_input)
 				loss, loss_dict, id_logs = self.calc_loss(x, y, y_hat, latent,
 														  target_ages=target_ages,
+														  input_ages=input_ages,
 														  no_aging=no_aging,
 														  data_type="real")
 				loss.backward()
 
-				# perform cycle on generate images by reversing the aging amount
+				# perform cycle on generate images by setting the target ages to the original input ages
 				y_hat_clone = y_hat.clone().detach().requires_grad_(True)
-				y_hat_inverse = self.__set_target_to_source(y_hat_clone)
+				input_ages_clone = input_ages.clone().detach().requires_grad_(True)
+				y_hat_inverse = self.__set_target_to_source(x=y_hat_clone, input_ages=input_ages_clone)
 				y_hat_inverse = torch.stack(y_hat_inverse)
 				reverse_target_ages = y_hat_inverse[:, -1, 0, 0]
 				y_recovered, latent_cycle = self.perform_forward_pass(y_hat_inverse)
 				loss, cycle_loss_dict, cycle_id_logs = self.calc_loss(x, y, y_recovered, latent_cycle,
 																	  target_ages=reverse_target_ages,
+																	  input_ages=input_ages,
 																	  no_aging=no_aging,
 																	  data_type="cycle")
 				loss.backward()
@@ -166,12 +170,15 @@ class Coach:
 			with torch.no_grad():
 				x, y = x.to(self.device).float(), y.to(self.device).float()
 
+				input_ages = self.aging_loss.extract_ages(x) / 100.
+
 				# perform no aging in 33% of the time
 				no_aging = random.random() <= (1. / 3)
 				if no_aging:
-					x_input = self.__set_target_to_source(x)
+					x_input = self.__set_target_to_source(x=x, input_ages=input_ages)
 				else:
 					x_input = [self.age_transformer(img.cpu()).to(self.device) for img in x]
+
 				x_input = torch.stack(x_input)
 				target_ages = x_input[:, -1, 0, 0]
 
@@ -179,16 +186,18 @@ class Coach:
 				y_hat, latent = self.perform_forward_pass(x_input)
 				_, cur_loss_dict, id_logs = self.calc_loss(x, y, y_hat, latent,
 														   target_ages=target_ages,
+														   input_ages=input_ages,
 														   no_aging=no_aging,
 														   data_type="real")
 
-				# perform cycle on generate images by reversing the aging amount
-				y_hat_inverse = self.__set_target_to_source(y_hat)
+				# perform cycle on generate images by setting the target ages to the original input ages
+				y_hat_inverse = self.__set_target_to_source(x=y_hat, input_ages=input_ages)
 				y_hat_inverse = torch.stack(y_hat_inverse)
-				y_recovered, latent_cycle = self.perform_forward_pass(y_hat_inverse)
 				reverse_target_ages = y_hat_inverse[:, -1, 0, 0]
+				y_recovered, latent_cycle = self.perform_forward_pass(y_hat_inverse)
 				loss, cycle_loss_dict, cycle_id_logs = self.calc_loss(x, y, y_recovered, latent_cycle,
 																	  target_ages=reverse_target_ages,
+																	  input_ages=input_ages,
 																	  no_aging=no_aging,
 																	  data_type="cycle")
 
@@ -258,12 +267,15 @@ class Coach:
 		print(f"Number of test samples: {len(test_dataset)}")
 		return train_dataset, test_dataset
 
-	def calc_loss(self, x, y, y_hat, latent, target_ages, no_aging, data_type="real"):
+	def calc_loss(self, x, y, y_hat, latent, target_ages, input_ages, no_aging, data_type="real"):
 		loss_dict = {}
 		id_logs = []
 		loss = 0.0
 		if self.opts.id_lambda > 0:
-			weights = train_utils.compute_cosine_weights(x=target_ages) if self.opts.use_weighted_id_loss else None
+			weights = None
+			if self.opts.use_weighted_id_loss:  # compute weighted id loss only on forward pass
+				age_diffs = torch.abs(target_ages - input_ages)
+				weights = train_utils.compute_cosine_weights(x=age_diffs)
 			loss_id, sim_improvement, id_logs = self.id_loss(y_hat, y, x, label=data_type, weights=weights)
 			loss_dict[f'loss_id_{data_type}'] = float(loss_id)
 			loss_dict[f'id_improve_{data_type}'] = float(sim_improvement)

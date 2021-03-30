@@ -15,9 +15,7 @@ from training.coach_aging import Coach
 
 def main():
 	opts = TrainOptions().parse()
-	if os.path.exists(opts.exp_dir):
-		raise Exception(f'Oops... {opts.exp_dir} already exists')
-	os.makedirs(opts.exp_dir)
+	os.makedirs(opts.exp_dir, exist_ok=True)
 
 	opts_dict = vars(opts)
 	pprint.pprint(opts_dict)
