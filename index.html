@@ -34,16 +34,23 @@
 
 
 <div class="section hero p2m">
-    <div class="container-2 p2m_header_v2 w-container"><h1 class="title">Style-Based Age Manipulation</h1>
-        <h1 class="subheader"> Only a Matter of Style: Age Transformation Using a Style-Based Regression Model</h1>
+    <div class="container-2 p2m_header_v2 w-container">
+        <span>
+            <h1 class="title">Style-Based Age Manipulation</h1>
+        </span>
+        <span>
+            <h1 class="subheader"> Only a Matter of Style: Age Transformation Using a Style-Based Regression Model</h1>
+        </span>
         <div class="p2m_authors_list_single w-row">
-            <div class="w-col w-col-4 w-col-small-4 w-col-tiny-6">
-                <a class="authors" href="https://yuval-alaluf.github.io/" target="_blank">Yuval Alaluf</a></div>
-            <div class="w-col w-col-4 w-col-small-2 w-col-tiny-6">
-                <a class="authors" href="https://orpatashnik.github.io/" target="_blank">Or Patashnik</a></div>
-            <div class="w-col w-col-4 w-col-small-4 w-col-tiny-6">
-                <a class="authors" href="https://www.cs.tau.ac.il/~dcor/" target="_blank">Daniel Cohen-Or</a>
-            </div>
+            <span>
+                <div class="w-col w-col-4 w-col-small-4 w-col-tiny-6">
+                    <a class="authors" href="https://yuval-alaluf.github.io/" target="_blank">Yuval Alaluf</a></div>
+                <div class="w-col w-col-4 w-col-small-4 w-col-tiny-6">
+                    <a class="authors" href="https://orpatashnik.github.io/" target="_blank">Or Patashnik</a></div>
+                <div class="w-col w-col-4 w-col-small-4 w-col-tiny-6">
+                    <a class="authors" href="https://www.cs.tau.ac.il/~dcor/" target="_blank">Daniel Cohen-Or</a>
+                </div>
+            </span>
         </div>
         <div class="div-block-10">
             <div class="equal_v2">Tel Aviv University</div>
@@ -52,13 +59,13 @@
         <div>
             <br>
             <span class="center">
-                <video onloadeddata="this.play();" poster="poster.png" width="450" playsinline loop muted controls>
+                <video onloadeddata="this.play();" poster="poster.png" width="49%" playsinline loop muted controls>
                     <source src="images/1181_animation.mp4" type="video/mp4" />
                     <source src="images/1181_animation.mp4.webm" type="video/webm" />
                     <source src="images/1181_animation.mp4.ogg" type="video/ogg" />
                     Your browser does not support the video tag or the file format of this video.
                 </video>
-                <video onloadeddata="this.play();" poster="poster.png" width="450" playsinline loop muted controls>
+                <video onloadeddata="this.play();" poster="poster.png" width="49%" playsinline loop muted controls>
                     <source src="images/1936_animation.mp4" type="video/mp4" />
                     <source src="images/1936_animation.mp4.webm" type="video/webm" />
                     <source src="images/1936_animation.mp4.ogg" type="video/ogg" />
@@ -149,21 +156,33 @@
             We introduce SAM --- Style-based Age Manipulaton, a technique for modeling fine-grained age transformation from a single input facial image. SAM pairs a pre-trained, fixed StyleGAN generator with an encoder network tasked with encoding real face images into a series 
             of style vectors subject to the desired age change.
         </p>
-        <div><span class="center" id="architecture" ><embed src="images/architecture.png" /></span></div>
+        <div>   
+            <span class="center" id="architecture" >
+                <img src="images/architecture.png" width=95%/>
+            </span>
+        </div>
         <br><br>
          <p class="paragraph-3 the_text">
             A pre-trained, fixed age regressor guides the encoder into generating the desired age-transformed latent codes. 
             As a result, SAM views human aging as a regression problem to the desired target age.
 
         </p>
-        <div><span class="center" id="architecture" ><embed src="images/aging.png" /></span></div>
+        <div>
+            <span class="center" id="architecture" >
+                <img src="images/aging.png" width=95%/>
+            </span>
+        </div>
 
         <br><br>
         <p class="paragraph-3 the_text">
             Guided by the age regressor, SAM learns <i>non-linear</i> paths able to better disentangle age from other attributes 
             (pose, hair style, etc.). These paths are well-suited to the complex nature of StyleGAN’s latent space manifold.
         </p>
-        <div><span class="center" id="architecture" ><embed src="images/latent_paths.png" /></span></div>
+        <div>
+            <span class="center" id="architecture" >
+                <img src="images/latent_paths.png" width=95%/>
+            </span>
+        </div>
     </div>
 </div>
 
@@ -177,13 +196,13 @@
     <div class="row" style="text-align:center;padding:0;margin:0" id="gifs">
 
         <span class="center">
-            <video onloadeddata="this.play();" poster="poster.png" width="450" playsinline loop muted controls>
+            <video onloadeddata="this.play();" poster="poster.png" width="45%" playsinline loop muted controls>
                 <source src="images/1287_animation.mp4" type="video/mp4" />
                 <source src="images/1287_animation.mp4.webm" type="video/webm" />
                 <source src="images/1287_animation.mp4.ogg" type="video/ogg" />
                 Your browser does not support the video tag or the file format of this video.
             </video>
-            <video onloadeddata="this.play();" poster="poster.png" width="450" playsinline loop muted controls>
+            <video onloadeddata="this.play();" poster="poster.png" width="45%" playsinline loop muted controls>
                 <source src="images/866_animation.mp4" type="video/mp4" />
                 <source src="images/866_animation.mp4.webm" type="video/webm" />
                 <source src="images/866_animation.mp4.ogg" type="video/ogg" />
@@ -192,13 +211,13 @@
         </span>
 
         <span class="center">
-            <video onloadeddata="this.play();" poster="poster.png" width="450" playsinline loop muted controls>
+            <video onloadeddata="this.play();" poster="poster.png" width="45%" playsinline loop muted controls>
                 <source src="images/2417_animation.mp4" type="video/mp4" />
                 <source src="images/2417_animation.mp4.webm" type="video/webm" />
                 <source src="images/2417_animation.mp4.ogg" type="video/ogg" />
                 Your browser does not support the video tag or the file format of this video.
             </video>
-            <video onloadeddata="this.play();" poster="poster.png" width="450" playsinline loop muted controls>
+            <video onloadeddata="this.play();" poster="poster.png" width="45%" playsinline loop muted controls>
                 <source src="images/1421_animation.mp4" type="video/mp4" />
                 <source src="images/1421_animation.mp4.webm" type="video/webm" />
                 <source src="images/1421_animation.mp4.ogg" type="video/ogg" />
@@ -207,13 +226,13 @@
         </span>
 
         <span class="center">
-            <video onloadeddata="this.play();" poster="poster.png" width="450" playsinline loop muted controls>
+            <video onloadeddata="this.play();" poster="poster.png" width="45%" playsinline loop muted controls>
                 <source src="images/1046_animation.mp4" type="video/mp4" />
                 <source src="images/1046_animation.mp4.webm" type="video/webm" />
                 <source src="images/1046_animation.mp4.ogg" type="video/ogg" />
                 Your browser does not support the video tag or the file format of this video.
             </video>
-            <video onloadeddata="this.play();" poster="poster.png" width="450" playsinline loop muted controls>
+            <video onloadeddata="this.play();" poster="poster.png" width="45%" playsinline loop muted controls>
                 <source src="images/346_animation.mp4" type="video/mp4" />
                 <source src="images/346_animation.mp4.webm" type="video/webm" />
                 <source src="images/346_animation.mp4.ogg" type="video/ogg" />
@@ -222,13 +241,13 @@
         </span>
 
         <span class="center">
-            <video onloadeddata="this.play();" poster="poster.png" width="450" playsinline loop muted controls>
+            <video onloadeddata="this.play();" poster="poster.png" width="45%" playsinline loop muted controls>
                 <source src="images/DavidTennant_animation.mp4" type="video/mp4" />
                 <source src="images/DavidTennant_animation.mp4.webm" type="video/webm" />
                 <source src="images/DavidTennant_animation.mp4.ogg" type="video/ogg" />
                 Your browser does not support the video tag or the file format of this video.
             </video>
-            <video onloadeddata="this.play();" poster="poster.png" width="450" playsinline loop muted controls>
+            <video onloadeddata="this.play();" poster="poster.png" width="45%" playsinline loop muted controls>
                 <source src="images/jackson_animation.mp4" type="video/mp4" />
                 <source src="images/jackson_animation.mp4.webm" type="video/webm" />
                 <source src="images/jackson_animation.mp4.ogg" type="video/ogg" />
