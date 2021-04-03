@@ -1,0 +1,245 @@
+
+ 
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Style-Based Age Manipulation</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <link href="min.css" rel="stylesheet" type="text/css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        WebFont.load({google: {families: ["Lato:100,100italic,300,300italic,400,400italic,700,700italic,900,900italic", "Montserrat:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic", "Ubuntu:300,300italic,400,400italic,500,500italic,700,700italic", "Changa One:400,400italic", "Open Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic", "Varela Round:400", "Bungee Shade:regular", "Roboto:300,regular,500"]}});</script>
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"
+            type="text/javascript"></script><![endif]-->
+    <script type="text/javascript">!function (o, c) {
+        var n = c.documentElement, t = " w-mod-";
+        n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
+    }(window, document);</script>
+    <link href="images/thumbnail.jpg"
+          rel="shortcut icon" type="image/x-icon"/>
+    <style>
+        .wf-loading * {
+            opacity: 0;
+        }
+    </style>
+
+    <script src="https://threejs.org/build/three.js"></script>
+    <script src='https://threejs.org/examples/js/controls/OrbitControls.js'></script>
+    <script src='https://threejs.org/examples/js/loaders/OBJLoader.js'></script>
+</head>
+<body>
+
+
+<div class="section hero p2m">
+    <div class="container-2 p2m_header_v2 w-container"><h1 class="title">Style-Based Age Manipulation</h1>
+        <h1 class="subheader"> Only a Matter of Style: Age Transformation Using a Style-Based Regression Model</h1>
+        <div class="p2m_authors_list_single w-row">
+            <div class="w-col w-col-4 w-col-small-4 w-col-tiny-6">
+                <a class="authors" href="https://yuval-alaluf.github.io/" target="_blank">Yuval Alaluf</a></div>
+            <div class="w-col w-col-4 w-col-small-2 w-col-tiny-6">
+                <a class="authors" href="https://orpatashnik.github.io/" target="_blank">Or Patashnik</a></div>
+            <div class="w-col w-col-4 w-col-small-4 w-col-tiny-6">
+                <a class="authors" href="https://www.cs.tau.ac.il/~dcor/" target="_blank">Daniel Cohen-Or</a>
+            </div>
+        </div>
+        <div class="div-block-10">
+            <div class="equal_v2">Tel Aviv University</div>
+        </div>
+
+        <div>
+            <br>
+            <span class="center">
+                <video onloadeddata="this.play();" poster="poster.png" width="450" playsinline loop muted controls>
+                    <source src="images/1181_animation.mp4" type="video/mp4" />
+                    <source src="images/1181_animation.mp4.webm" type="video/webm" />
+                    <source src="images/1181_animation.mp4.ogg" type="video/ogg" />
+                    Your browser does not support the video tag or the file format of this video.
+                </video>
+                <video onloadeddata="this.play();" poster="poster.png" width="450" playsinline loop muted controls>
+                    <source src="images/1936_animation.mp4" type="video/mp4" />
+                    <source src="images/1936_animation.mp4.webm" type="video/webm" />
+                    <source src="images/1936_animation.mp4.ogg" type="video/ogg" />
+                    Your browser does not support the video tag or the file format of this video.
+                </video>
+            </span>
+            <br>
+        </div>
+
+        <!--start links -->
+        <div class="p2m_authors_list_single w-row">
+            <div class="w-col w-col-4 w-col-small-3 w-col-tiny-4">
+                <a class="authors" href="" target="_blank">
+                    <a href="https://arxiv.org/abs/2102.02754" target="_blank"><i
+                            class="far fa-4x fa-file text-primary mb-3 "></i></a>
+                </a></div>
+
+            <div class="w-col w-col-4 w-col-small-3 w-col-tiny-4">
+                <a class="authors" href="" target="_blank">
+                    <a href="https://github.com/yuval-alaluf/SAM" target="_blank"><i
+                            class="fab fa-4x fa-github text-primary mb-3 "></i></a>
+                </a></div>
+
+            <div class="w-col w-col-4 w-col-small-3 w-col-tiny-4">
+                <a class="authors" href="" target="_blank">
+                    <a href="http://colab.research.google.com/github/yuval-alaluf/SAM/blob/master/notebooks/inference_playground.ipynb" target="_blank"><i
+                            class="fas fa-code fa-4x text-primary mb-3 "></i></a>
+                </a></div>
+        </div>
+
+        <div class="div-block-4 w-row">
+            <div class="w-col w-col-4 w-col-small-3 w-col-tiny-4">
+                <div class="text-block-2"><strong style="color:#18446c" class="icon-bold-text">Paper</strong></div>
+            </div>
+            <div class="w-col w-col-4 w-col-small-3 w-col-tiny-4">
+                <div class="text-block-2">
+                    <strong style="color:#18446c" class="icon-bold-text">Code</strong>
+                </div>
+            </div>
+            <div class="w-col w-col-4 w-col-small-3 w-col-tiny-4">
+                <div class="text-block-2"><strong style="color:#18446c" class="icon-bold-text">Colab</strong></div>
+            </div>
+        </div>
+    </div>
+
+    <!--  end links  -->
+</div>
+</div>
+
+<div class="white_section">
+    <div class="w-container"><h2 class="grey-heading">Abstract</h2>
+        <p class="paragraph-3 the_text">
+            The task of age transformation illustrates the change of an individual's appearance over time. Accurately modeling this complex transformation over an input facial image is extremely challenging 
+            as it requires making convincing and possibly large changes to facial features and head shape, while 
+            still preserving the input identity. In this work, we present an image-to-image translation method 
+            that learns to directly encode real facial images into the latent space of a pre-trained unconditional
+            GAN (e.g., StyleGAN) subject to a given aging shift. We employ a pre-trained age regression network
+            used to explicitly guide the encoder in generating the latent codes corresponding to the desired 
+            age. In this formulation, our method approaches the continuous aging process as a regression task 
+            between the input age and desired target age, providing fine-grained control over the generated 
+            image. Moreover, unlike other approaches that operate solely in the latent space using a prior on 
+            the path controlling age, our method learns a more disentangled, non-linear path. Finally, we 
+            demonstrate that the end-to-end nature of our approach, coupled with the rich semantic latent space
+            of StyleGAN, allows for further editing of the generated images. Qualitative and quantitative 
+            evaluations show the advantages of our method compared to state-of-the-art approaches.
+        </p>
+    </div>
+</div>
+
+
+
+<div class="section the_section" data-anchor="slide1">
+    <div class="w-container"><h2 class="grey-heading">Video</h2>
+        <div class="w-embed-youtubevideo stega_movie youtube" id="w-node-e5e45b1d55ac-81500a5f"
+             style="padding-top:56.17021276595745%">
+            <iframe allow="autoplay; encrypted-media" allowfullscreen="" frameBorder="0"
+                    src="https://www.youtube.com/embed/X_pYC_LtBFw?rel=1&amp;controls=1&amp;autoplay=0&amp;mute=0&amp;start=0"
+                    style="position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:auto"></iframe>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="white_section">
+    <div class="w-container"><h2 class="grey-heading">Overview</h2>
+        <p class="paragraph-3 the_text" >
+            We introduce SAM --- Style-based Age Manipulaton, a technique for modeling fine-grained age transformation from a single input facial image. SAM pairs a pre-trained, fixed StyleGAN generator with an encoder network tasked with encoding real face images into a series 
+            of style vectors subject to the desired age change.
+        </p>
+        <div><span class="center" id="architecture" ><embed src="images/architecture.png" /></span></div>
+        <br><br>
+         <p class="paragraph-3 the_text">
+            A pre-trained, fixed age regressor guides the encoder into generating the desired age-transformed latent codes. 
+            As a result, SAM views human aging as a regression problem to the desired target age.
+
+        </p>
+        <div><span class="center" id="architecture" ><embed src="images/aging.png" /></span></div>
+
+        <br><br>
+        <p class="paragraph-3 the_text">
+            Guided by the age regressor, SAM learns <i>non-linear</i> paths able to better disentangle age from other attributes 
+            (pose, hair style, etc.). These paths are well-suited to the complex nature of StyleGAN’s latent space manifold.
+        </p>
+        <div><span class="center" id="architecture" ><embed src="images/latent_paths.png" /></span></div>
+    </div>
+</div>
+
+<div class="white_section">
+    <div class="w-container"><h2 class="grey-heading">Results</h2>
+
+    <p class="paragraph-3 the_text">
+        Below we show aging results between the ages 0 and 100.
+    </p>
+
+    <div class="row" style="text-align:center;padding:0;margin:0" id="gifs">
+
+        <span class="center">
+            <video onloadeddata="this.play();" poster="poster.png" width="450" playsinline loop muted controls>
+                <source src="images/1287_animation.mp4" type="video/mp4" />
+                <source src="images/1287_animation.mp4.webm" type="video/webm" />
+                <source src="images/1287_animation.mp4.ogg" type="video/ogg" />
+                Your browser does not support the video tag or the file format of this video.
+            </video>
+            <video onloadeddata="this.play();" poster="poster.png" width="450" playsinline loop muted controls>
+                <source src="images/866_animation.mp4" type="video/mp4" />
+                <source src="images/866_animation.mp4.webm" type="video/webm" />
+                <source src="images/866_animation.mp4.ogg" type="video/ogg" />
+                Your browser does not support the video tag or the file format of this video.
+            </video>
+        </span>
+
+        <span class="center">
+            <video onloadeddata="this.play();" poster="poster.png" width="450" playsinline loop muted controls>
+                <source src="images/2417_animation.mp4" type="video/mp4" />
+                <source src="images/2417_animation.mp4.webm" type="video/webm" />
+                <source src="images/2417_animation.mp4.ogg" type="video/ogg" />
+                Your browser does not support the video tag or the file format of this video.
+            </video>
+            <video onloadeddata="this.play();" poster="poster.png" width="450" playsinline loop muted controls>
+                <source src="images/1421_animation.mp4" type="video/mp4" />
+                <source src="images/1421_animation.mp4.webm" type="video/webm" />
+                <source src="images/1421_animation.mp4.ogg" type="video/ogg" />
+                Your browser does not support the video tag or the file format of this video.
+            </video>
+        </span>
+
+        <span class="center">
+            <video onloadeddata="this.play();" poster="poster.png" width="450" playsinline loop muted controls>
+                <source src="images/1046_animation.mp4" type="video/mp4" />
+                <source src="images/1046_animation.mp4.webm" type="video/webm" />
+                <source src="images/1046_animation.mp4.ogg" type="video/ogg" />
+                Your browser does not support the video tag or the file format of this video.
+            </video>
+            <video onloadeddata="this.play();" poster="poster.png" width="450" playsinline loop muted controls>
+                <source src="images/346_animation.mp4" type="video/mp4" />
+                <source src="images/346_animation.mp4.webm" type="video/webm" />
+                <source src="images/346_animation.mp4.ogg" type="video/ogg" />
+                Your browser does not support the video tag or the file format of this video.
+            </video>
+        </span>
+
+        <span class="center">
+            <video onloadeddata="this.play();" poster="poster.png" width="450" playsinline loop muted controls>
+                <source src="images/DavidTennant_animation.mp4" type="video/mp4" />
+                <source src="images/DavidTennant_animation.mp4.webm" type="video/webm" />
+                <source src="images/DavidTennant_animation.mp4.ogg" type="video/ogg" />
+                Your browser does not support the video tag or the file format of this video.
+            </video>
+            <video onloadeddata="this.play();" poster="poster.png" width="450" playsinline loop muted controls>
+                <source src="images/jackson_animation.mp4" type="video/mp4" />
+                <source src="images/jackson_animation.mp4.webm" type="video/webm" />
+                <source src="images/jackson_animation.mp4.ogg" type="video/ogg" />
+                Your browser does not support the video tag or the file format of this video.
+            </video>
+        </span>
+        <br>
+
+    
+    </div>
+    </div>
+</div>
+
+</body></html>
