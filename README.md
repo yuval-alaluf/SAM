@@ -4,9 +4,10 @@
 
 <a href="https://arxiv.org/abs/2102.02754"><img src="https://img.shields.io/badge/arXiv-2008.00951-b31b1b.svg"></a>
 <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg"></a>
-<a href="http://colab.research.google.com/github/yuval-alaluf/SAM/blob/master/notebooks/inference_playground.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" height=20></a>
-<a href="http://colab.research.google.com/github/yuval-alaluf/SAM/blob/master/notebooks/animation_inference_playground.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" height=20></a>
-<a href="https://youtu.be/X_pYC_LtBFw"><img src="https://img.shields.io/badge/-YouTube-red?&style=for-the-badge&logo=youtube&logoColor=white" height=20></a>
+<a href="https://youtu.be/X_pYC_LtBFw"><img src="https://img.shields.io/badge/-YouTube-red?&style=for-the-badge&logo=youtube&logoColor=white" height=20></a>  
+Inference Notebook:
+<a href="http://colab.research.google.com/github/yuval-alaluf/SAM/blob/master/notebooks/inference_playground.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" height=20></a>  
+Animation Notebook: <a href="http://colab.research.google.com/github/yuval-alaluf/SAM/blob/master/notebooks/animation_inference_playground.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" height=20></a>
 
 
 <p align="center">
