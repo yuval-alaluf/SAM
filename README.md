@@ -277,12 +277,16 @@ This code borrows heavily from [pixel2style2pixel](https://github.com/eladrich/p
 If you use this code for your research, please cite our paper <a href="https://arxiv.org/abs/2102.02754">Only a Matter of Style: Age Transformation Using a Style-Based Regression Model</a>:
 
 ```
-@misc{alaluf2021matter,
-      title={Only a Matter of Style: Age Transformation Using a Style-Based Regression Model}, 
-      author={Yuval Alaluf and Or Patashnik and Daniel Cohen-Or},
-      year={2021},
-      eprint={2102.02754},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
+@article{alaluf2021matter,
+    author = {Alaluf, Yuval and Patashnik, Or and Cohen-Or, Daniel},
+    title = {Only a Matter of Style: Age Transformation Using a Style-Based Regression Model},
+    journal = {ACM Trans. Graph.},
+    issue_date = {August 2021},
+    volume = {40},
+    number = {4},
+    year = {2021},
+    articleno = {45},
+    publisher = {Association for Computing Machinery},
+    url = {https://doi.org/10.1145/3450626.3459805}
 }
 ```
