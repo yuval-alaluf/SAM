@@ -9,6 +9,7 @@ Inference Notebook:
 <a href="http://colab.research.google.com/github/yuval-alaluf/SAM/blob/master/notebooks/inference_playground.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" height=20></a>  
 Animation Notebook: <a href="http://colab.research.google.com/github/yuval-alaluf/SAM/blob/master/notebooks/animation_inference_playground.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" height=20></a>
 
+[Demo and Docker image on Replicate](https://replicate.ai/yuval-alaluf/sam)
 
 <p align="center">
 <img src="docs/teaser.jpeg" width="800px"/>
