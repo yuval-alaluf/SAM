@@ -24,6 +24,14 @@ class Predictor(cog.Predictor):
                 transforms.Normalize([0.5, 0.5, 0.5], [0.5, 0.5, 0.5]),
             ]
         )
+        model_path = "pretrained_models/sam_ffhq_aging.pt"
+        ckpt = torch.load(model_path, map_location="cpu")
+
+        opts = ckpt["opts"]
+        opts["checkpoint_path"] = model_path
+        opts["device"] = "cuda" if torch.cuda.is_available() else "cpu"
+
+        self.opts = Namespace(**opts)
 
     @cog.input("image", type=Path, help="facial image")
     @cog.input(
@@ -34,15 +42,7 @@ class Predictor(cog.Predictor):
         "a gif for age from 0, 10, 20,...,to 100 will be displayed",
     )
     def predict(self, image, target_age="default"):
-        model_path = "pretrained_models/sam_ffhq_aging.pt"
-        ckpt = torch.load(model_path, map_location="cpu")
-
-        opts = ckpt["opts"]
-        opts["checkpoint_path"] = model_path
-        opts["device"] = "cuda" if torch.cuda.is_available() else "cpu"
-
-        opts = Namespace(**opts)
-        net = pSp(opts)
+        net = pSp(self.opts)
         net.eval()
         if torch.cuda.is_available():
             net.cuda()
