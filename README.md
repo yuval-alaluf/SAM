@@ -43,6 +43,15 @@ Please download the pretrained aging model from the following links.
 | :--- | :----------
 |[SAM](https://drive.google.com/file/d/1XyumF6_fdAxFmxpFcmPf-q84LU_22EMC/view?usp=sharing)  | SAM trained on the FFHQ dataset for age transformation.
 
+You can run this to download it to the right place:
+
+```
+mkdir pretrained_models
+pip install gdown
+gdown "https://drive.google.com/u/0/uc?id=1XyumF6_fdAxFmxpFcmPf-q84LU_22EMC&export=download" -O pretrained_models/sam_ffhq_aging.pt
+wget "https://github.com/italojs/facial-landmarks-recognition/raw/master/shape_predictor_68_face_landmarks.dat"
+```
+
 In addition, we provide various auxiliary models needed for training your own SAM model from scratch.  
 This includes the pretrained pSp encoder model for generating the encodings of the input image and the aging classifier 
 used to compute the aging loss during training.

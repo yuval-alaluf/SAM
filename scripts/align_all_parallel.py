@@ -38,8 +38,13 @@ def get_landmark(filepath, predictor):
 	img = dlib.load_rgb_image(filepath)
 	dets = detector(img, 1)
 
+	shape = None
+
 	for k, d in enumerate(dets):
 		shape = predictor(img, d)
+
+	if not shape:
+		raise Exception("Could not find face in image. Try another!")
 
 	t = list(shape.parts())
 	a = []
