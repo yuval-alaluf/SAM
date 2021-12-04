@@ -5,6 +5,7 @@
 <a href="https://arxiv.org/abs/2102.02754"><img src="https://img.shields.io/badge/arXiv-2008.00951-b31b1b.svg" height=22.5></a>
 <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" height=22.5></a>
 
+<a href="https://www.youtube.com/watch?v=zDTUbtmUbG8"><img src="https://img.shields.io/static/v1?label=Two Minute Papers&message=SAM Video&color=red" height=22.5></a>  
 <a href="https://youtu.be/X_pYC_LtBFw"><img src="https://img.shields.io/static/v1?label=SIGGRAPH 2021 &message=5 Minute Video&color=red" height=22.5></a>  
 <a href="https://replicate.ai/yuval-alaluf/sam"><img src="https://img.shields.io/static/v1?label=Replicate&message=Demo and Docker Image&color=darkgreen" height=22.5></a>
 
