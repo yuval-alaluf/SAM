@@ -92,7 +92,7 @@ def align_face(filepath, predictor):
 	qsize = np.hypot(*x) * 2
 
 	# read image
-	img = PIL.Image.open(filepath)
+	img = PIL.Image.open(filepath).convert("RGB")
 
 	output_size = 256
 	transform_size = 256
