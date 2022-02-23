@@ -27,6 +27,28 @@ allows modeling fine-grained age transformation using a single input facial imag
 <img src="docs/1936.jpg" width="800px"/>
 </p>
 
+## Table of Contents
+  * [Getting Started](#getting-started)
+    + [Prerequisites](#prerequisites)
+    + [Installation](#installation)
+  * [Pretrained Models](#pretrained-models)
+  * [Training](#training)
+    + [Preparing your Data](#preparing-your-data)
+    + [Training SAM](#training-sam)
+    + [Additional Notes](#additional-notes)
+  * [Notebooks](#notebooks)
+    + [Inference Notebook](#inference-notebook)
+    + [MP4 Notebook](#mp4-notebook)
+  * [Testing](#testing)
+    + [Inference](#inference)
+    + [Side-by-Side Inference](#side-by-side-inference)
+    + [Reference-Guided Inference](#reference-guided-inference)
+    + [Style Mixing](#style-mixing)
+  * [Repository structure](#repository-structure)
+  * [Credits](#credits)
+  * [Acknowledgments](#acknowledgments)
+  * [Citation](#citation)
+
 
 ## Getting Started
 ### Prerequisites
