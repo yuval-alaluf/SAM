@@ -1,13 +1,11 @@
 import tempfile
 from argparse import Namespace
-from pathlib import Path
-
-import cog
 import dlib
 import imageio
 import numpy as np
 import torch
 import torchvision.transforms as transforms
+from cog import BasePredictor, Path, Input
 
 from datasets.augmentations import AgeTransformer
 from models.psp import pSp
@@ -15,7 +13,7 @@ from scripts.align_all_parallel import align_face
 from utils.common import tensor2im
 
 
-class Predictor(cog.Predictor):
+class Predictor(BasePredictor):
     def setup(self):
         self.transform = transforms.Compose(
             [
@@ -33,15 +31,16 @@ class Predictor(cog.Predictor):
 
         self.opts = Namespace(**opts)
 
-    @cog.input("image", type=Path, help="facial image")
-    @cog.input(
-        "target_age",
-        type=str,
-        default="default",
-        help="age of the output image, when choose 'default'"
-        "a gif for age from 0, 10, 20,...,to 100 will be displayed",
-    )
-    def predict(self, image, target_age="default"):
+    def predict(
+            self,
+            image: Path = Input(
+                description="facial image",
+            ),
+            target_age: str = Input(
+                description="age of the output image, when choose 'default' "
+                            "a gif for age from 0, 10, 20,...,to 100 will be displayed",
+            ),
+    ) -> Path:
         net = pSp(self.opts)
         net.eval()
         if torch.cuda.is_available():
